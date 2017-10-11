@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Working with Calculators
+
 func add(_ valA:Int, _ valB:Int) -> Int {
     return valA + valB
 }
@@ -20,33 +22,23 @@ func multiply(_ valA:Int, _ valB:Int) -> Int {
     return valA * valB
 }
 
-func divide(_ valA:Int, _ valB:Int) -> Double {
-    return Double(valA) / Double(valB)
+func divide(_ valA:Int, _ valB:Int) -> Int {
+    return valA / valB
 }
 
-func calcMathOperation(_ valA:Int, _ valB:Int, _ operand:String) {
-    let i:String = operand
-    switch i {
-        case "+":
-            print(add(valA, valB), terminator:"")   // terminator stops printing out "\n" at the end
-        case "-":
-            print(subtract(valA, valB), terminator:"")
-        case "*":
-            print(multiply(valA, valB), terminator:"")
-        case "/":
-            print(divide(valA, valB), terminator:"")
-        default:
-            print("Error, allowed operands include +, -, *, and / only. Function takes 2 ints and followed by an operand.")
-    }
+func calculate(_ valA:Int, _ valB:Int, _ operation:(Int, Int) -> Int) -> Int {
+    return operation(valA, valB)
 }
 
-func addArrays(_ array:[Int]) -> Int {
-    // a fast + short method provided by a StackOverFlow user
+// Working with Arrays
+
+func add(_ array:[Int]) -> Int {
+    // a faster + shorter method provided by a StackOverFlow user
     // found in https:\//stackoverflow.com/questions/24795130/finding-sum-of-elements-in-swift-array
     return array.reduce(0, +)
 }
 
-func multiplyArrays(_ array:[Int]) -> Int {
+func multiply(_ array:[Int]) -> Int {
     var result = 0;
     for number in array {
         result *= number
@@ -54,28 +46,58 @@ func multiplyArrays(_ array:[Int]) -> Int {
     return result
 }
 
-func countArrays(_ array:[Int]) -> Int {
+func count(_ array:[Int]) -> Int {
     return array.count
 }
 
-func averageArrays(_ array:[Int]) -> Double {
+func average(_ array:[Int]) -> Double {
     return Double(addArrays(array)) / Double(countArrays(array))
 }
 
-func arrayMathOperation(_ array:[Int], _ operand:String) {
-    let i:String = operand
-    switch i {
-    case "+":
-        print(addArrays(array), terminator:"")
-    case "*":
-        print(multiplyArrays(array), terminator:"")
-    case "count":
-        print(countArrays(array), terminator:"")
-    case "avg":
-        print(averageArrays(array), terminator:"")
-    default:
-        print("Error, allowed operands include + and * only. Function takes an array of integers and followed by an operand.")
-    }
+func calculate(_ array:[Int],_ operation:([Int]) -> Int) -> Int {
+    return operation(array)
 }
 
+// Working with Points (Tuples)
 
+func add(_ tupleA:(Int, Int), _ tupleB:(Int, Int)) -> (Int, Int) {
+    let sumOfX = add(tupleA.0, tupleB.0)
+    let sumOfY = add(tupleA.1, tupleB.1)
+    return (sumOfX, sumOfY)
+}
+
+func subtract(_ tupleA:(Int, Int), _ tupleB:(Int, Int)) -> (Int, Int) {
+    let differenceOfX = subtract(tupleA.0, tupleB.0)
+    let differenceOfY = subtract(tupleA.1, tupleB.1)
+    return (differenceOfX, differenceOfY)
+}
+
+// In the case of non-two-arity points (more than 2 points given by the user
+
+func add(_ points:(Int, Int)...) -> (Int, Int) {
+    var sumOfX = 0
+    var sumOfY = 0
+    for point in points {
+        sumOfX += point.0
+        sumOfY += point.1
+    }
+    return (sumOfX, sumOfY)
+}
+
+func subtract(_ points:(Int, Int)...) -> (Int, Int) {
+    var differenceOfX = 0
+    var differenceOfY = 0
+    for point in points {
+        differenceOfX -= point.0
+        differenceOfY -= point.1
+    }
+    return (differenceOfY, differenceOfY)
+}
+
+// Working with Points (Dictionaries)
+
+
+
+
+// Generic Test:
+print(calculate(15, 5, divide))
