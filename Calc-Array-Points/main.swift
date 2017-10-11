@@ -51,7 +51,7 @@ func count(_ array:[Int]) -> Int {
 }
 
 func average(_ array:[Int]) -> Double {
-    return Double(addArrays(array)) / Double(countArrays(array))
+    return Double(add(array)) / Double(count(array))
 }
 
 func calculate(_ array:[Int],_ operation:([Int]) -> Int) -> Int {
@@ -91,7 +91,7 @@ func subtract(_ points:(Int, Int)...) -> (Int, Int) {
         differenceOfX -= point.0
         differenceOfY -= point.1
     }
-    return (differenceOfY, differenceOfY)
+    return (differenceOfX, differenceOfY)
 }
 
 // Working with Points (Dictionaries)
