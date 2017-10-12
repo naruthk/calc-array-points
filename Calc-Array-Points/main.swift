@@ -72,7 +72,7 @@ func subtract(_ tupleA:(Int, Int), _ tupleB:(Int, Int)) -> (Int, Int) {
     return (differenceOfX, differenceOfY)
 }
 
-// In the case of non-two-arity points (more than 2 points given by the user
+// In the case of non-two-arity points (more than 2 points given by the user)
 
 func add(_ points:(Int, Int)...) -> (Int, Int) {
     var sumOfX = 0
@@ -96,8 +96,59 @@ func subtract(_ points:(Int, Int)...) -> (Int, Int) {
 
 // Working with Points (Dictionaries)
 
+// Integers
+func add(_ dictA:[String:Int]?, _ dictB:[String:Int]?) -> [String:Int]? {
+    var sumOfX = 0
+    var sumOfY = 0
+    // Check for empty Xs & Ys
+    if (dictA?["x"] != nil && dictB?["x"] != nil && dictA?["y"] != nil && dictB?["y"] != nil) {
+        sumOfX = add((dictA?["x"])!, (dictB?["x"])!)
+        sumOfY = add((dictA?["y"])!, (dictB?["y"])!)
+        return ["x": sumOfX, "y": sumOfY]
+    }
+    print("Error. Points not formed properly.")
+    return nil
+}
 
+func subtract(_ dictA:[String:Int]?, _ dictB:[String:Int]?) -> [String:Int]? {
+    var differenceOfX = 0
+    var differenceOfY = 0
+    // Check for empty Xs & Ys
+    if (dictA?["x"] != nil && dictB?["x"] != nil && dictA?["y"] != nil && dictB?["y"] != nil) {
+        differenceOfX = subtract((dictA?["x"])!, (dictB?["x"])!)
+        differenceOfY = subtract((dictA?["y"])!, (dictB?["y"])!)
+        return ["x": differenceOfX, "y": differenceOfY]
+    }
+    print("Error. Points not formed properly.")
+    return nil
+}
 
+// Doubles
+func add(_ dictA:[String:Double]?, _ dictB:[String:Double]?) -> [String:Double]? {
+    var sumOfX:Double = 0
+    var sumOfY:Double = 0
+    // Check for empty Xs & Ys
+    if (dictA?["x"] != nil && dictB?["x"] != nil && dictA?["y"] != nil && dictB?["y"] != nil) {
+        sumOfX = (dictA?["x"])! + (dictB?["x"])!
+        sumOfY = (dictA?["y"])! + (dictB?["y"])!
+        return ["x": sumOfX, "y": sumOfY]
+    }
+    print("Error. Points not formed properly.")
+    return nil
+}
+
+func subtract(_ dictA:[String:Double]?, _ dictB:[String:Double]?) -> [String:Double]? {
+    var differenceOfX:Double = 0
+    var differenceOfY:Double = 0
+    // Check for empty Xs & Ys
+    if (dictA?["x"] != nil && dictB?["x"] != nil && dictA?["y"] != nil && dictB?["y"] != nil) {
+        differenceOfX = (dictA?["x"])! - (dictB?["x"])!
+        differenceOfY = (dictA?["y"])! - (dictB?["y"])!
+        return ["x": differenceOfX, "y": differenceOfY]
+    }
+    print("Error. Points not formed properly.")
+    return nil
+}
 
 // Generic Test:
 print(calculate(15, 5, divide))
