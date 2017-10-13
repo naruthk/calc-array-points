@@ -71,28 +71,28 @@ func subtract(_ tupleA:(Int, Int), _ tupleB:(Int, Int)) -> (Int, Int) {
     let differenceOfY = subtract(tupleA.1, tupleB.1)
     return (differenceOfX, differenceOfY)
 }
-
-// In the case of non-two-arity points (more than 2 points given by the user)
-
-func add(_ points:(Int, Int)...) -> (Int, Int) {
-    var sumOfX = 0
-    var sumOfY = 0
-    for point in points {
-        sumOfX += point.0
-        sumOfY += point.1
-    }
-    return (sumOfX, sumOfY)
-}
-
-func subtract(_ points:(Int, Int)...) -> (Int, Int) {
-    var differenceOfX = 0
-    var differenceOfY = 0
-    for point in points {
-        differenceOfX -= point.0
-        differenceOfY -= point.1
-    }
-    return (differenceOfX, differenceOfY)
-}
+// UPDATE: REMOVED BECAUSE TA SAID NO NEED TO DO THIS
+//// In the case of non-two-arity points (more than 2 points given by the user)
+//
+//func add(_ points:(Int, Int)...) -> (Int, Int) {
+//    var sumOfX = 0
+//    var sumOfY = 0
+//    for point in points {
+//        sumOfX += point.0
+//        sumOfY += point.1
+//    }
+//    return (sumOfX, sumOfY)
+//}
+//
+//func subtract(_ points:(Int, Int)...) -> (Int, Int) {
+//    var differenceOfX = 0
+//    var differenceOfY = 0
+//    for point in points {
+//        differenceOfX -= point.0
+//        differenceOfY -= point.1
+//    }
+//    return (differenceOfX, differenceOfY)
+//}
 
 // Working with Points (Dictionaries)
 
